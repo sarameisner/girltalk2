@@ -1,0 +1,158 @@
+---
+
+---
+
+<img class="image-chat" src="køchat.png" alt="">
+
+<div class="text-game">
+  <div class="text">
+    <h2>Empowerment Memory</h2>
+    <p>Det ultimative vendespil. Mens du venter i køen til vores chat, hvorfor så ikke prøve vores sjove memory-spil?</p>
+  </div>
+  <div class="memory-game">
+      <div class="board">
+        <!-- Cards will be generated dynamically here -->
+      </div>
+      <div class="message"></div>
+  <!-- This element will display the completion message and the Play Again button -->
+  </div>
+</div>
+
+
+<style>
+  .image-chat {
+    margin-top: 100px;
+    width: 400px;
+    margin-right: 150px;
+    margin-left: auto;
+  }
+
+  .text {
+      width: 700px;
+      text-align: center;
+      margin: 0 auto;
+  }
+  h2 {
+    font-size: 52px;
+    color: #273AAA;
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+  p {
+    font-size: 24px;
+  }
+</style>
+
+
+
+
+
+<script>
+
+const images = ["image1.png", "image1.png", "image2.png", "image2.png", "image3.png", "image3.png", "image4.png", "image4.png", "image5.png", "image5.png", "image6.png", "image6.png"];
+
+const board = document.querySelector(".board");
+let flippedCards = [];
+let matchedPairsCount = 0; // Track the number of matched pairs
+let canFlip = true; // Added a flag to prevent flipping multiple cards at once
+
+// Duplicate the images to create pairs
+let cards = [...images];
+
+// Shuffle the cards
+cards.sort(() => Math.random() - 0.5);
+
+// Create the board
+function createBoard() {
+  for (let i = 0; i < cards.length; i++) {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.setAttribute("data-index", "" + i);
+    card.addEventListener("click", flipCard);
+
+    const front = document.createElement("div");
+    front.classList.add("front");
+
+    const back = document.createElement("div");
+    back.classList.add("back");
+    back.style.backgroundImage = `url(${cards[i]})`;
+
+    card.appendChild(front);
+    card.appendChild(back);
+
+    board.appendChild(card);
+  }
+}
+
+// Flip the card
+function flipCard() {
+  if (!canFlip || this.classList.contains("flipped") || this.classList.contains("matched")) {
+    return;
+  }
+
+  this.classList.add("flipped");
+  flippedCards.push(this);
+
+  if (flippedCards.length === 2) {
+    canFlip = false; // Prevent flipping more cards until the check is done
+    const firstCardIndex = flippedCards[0].getAttribute("data-index");
+    const secondCardIndex = flippedCards[1].getAttribute("data-index");
+
+    if (cards[firstCardIndex] === cards[secondCardIndex]) {
+      matchedPairsCount++; // Increment the matched pairs count
+      flippedCards.forEach((card) => card.classList.add("matched", "hidden")); // Add both matched and hidden classes
+      flippedCards = [];
+
+      setTimeout(() => {
+        matchedPairsCount === cards.length / 2 && showCompletionMessage(); // Check if all pairs are matched
+        canFlip = true; // Allow flipping cards again
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        flippedCards.forEach((card) => card.classList.remove("flipped"));
+        flippedCards = [];
+        canFlip = true; // Allow flipping cards again
+      }, 1000);
+    }
+  }
+}
+
+// Function to show completion message
+function showCompletionMessage() {
+  console.log("All pairs are matched!"); // Debugging
+  const message = document.querySelector(".message");
+  message.classList.add("her");
+
+  // Add completion text
+  const completionText = document.createElement("p");
+  completionText.textContent = "You connected all pairs!";
+  message.appendChild(completionText);
+
+  // Add Play Again button
+  const playAgainButton = document.createElement("button");
+  playAgainButton.textContent = "Play Again";
+  playAgainButton.addEventListener("click", resetGame);
+  message.appendChild(playAgainButton);
+}
+
+// Function to reset the game
+function resetGame() {
+  // Clear the board
+  board.innerHTML = "";
+  // Reset flipped cards and matched pairs count
+  flippedCards = [];
+  matchedPairsCount = 0;
+  // Reshuffle and recreate the cards
+  cards = [...images];
+  cards.sort(() => Math.random() - 0.5);
+  createBoard();
+  // Remove completion message and play again button
+  const message = document.querySelector(".message");
+  message.textContent = "";
+  message.classList.remove("her");
+}
+
+createBoard();
+
+</script>
+  

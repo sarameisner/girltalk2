@@ -1,0 +1,172 @@
+---
+
+---
+
+<div class="button-image">
+    <div class="image-pulse">
+        <img class="image" src="hjerte.png" alt="">
+        <img class="image" src="sms.png" alt="">
+    </div>
+    <a target="_blank" href="https://www.girltalk.dk/vores-tilbud/chat-med-os?fbclid=IwZXh0bgNhZW0CMTAAAR2wDOBLj4vQdhqUSWK9HXOjyowyEgRbAoCb-mycf3iDetajGmutqpEyPyM_aem_AdN9SfU-PgsdQfFHiN9HPvthJ9mBYJB5em2GiZu6xyC1yYnMKt-NbtvIlaSOhl9_U0JKZRomX8FM-sw7kxFm1hXJ" class="chat-btn">Chat med os</a>
+    <div class="closed">
+        <img class="closed-image" src="closed.svg" alt="">
+        <p class="bold">Lukket</p>
+    </div>
+    <div class="open">
+        <img class="open-image" src="open.svg" alt="">
+        <p class="bold">Åben</p>
+    </div>
+</div>
+
+<div class="open image-chat">
+    <img class="open-image small" src="open.svg" alt="">
+    <a class="chat-bottom" target="_blank" href="https://www.girltalk.dk/vores-tilbud/chat-med-os?fbclid=IwZXh0bgNhZW0CMTAAAR2wDOBLj4vQdhqUSWK9HXOjyowyEgRbAoCb-mycf3iDetajGmutqpEyPyM_aem_AdN9SfU-PgsdQfFHiN9HPvthJ9mBYJB5em2GiZu6xyC1yYnMKt-NbtvIlaSOhl9_U0JKZRomX8FM-sw7kxFm1hXJ">Chat</p>
+</div>
+
+<div class="closed image-chat">
+    <img class="closed-image small" src="closed.svg" alt="">
+    <a class="chat-bottom" target="_blank" href="https://www.girltalk.dk/vores-tilbud/chat-med-os?fbclid=IwZXh0bgNhZW0CMTAAAR2wDOBLj4vQdhqUSWK9HXOjyowyEgRbAoCb-mycf3iDetajGmutqpEyPyM_aem_AdN9SfU-PgsdQfFHiN9HPvthJ9mBYJB5em2GiZu6xyC1yYnMKt-NbtvIlaSOhl9_U0JKZRomX8FM-sw7kxFm1hXJ">Chat</p>
+</div>
+
+
+
+<style>
+
+    .open {
+        margin: 10px auto;
+        display: flex;
+        gap: 10px;
+        width: 317px;
+    }
+
+    .closed {
+        margin: 10px auto;
+        display: flex;
+        gap: 10px;
+        width: 317px;
+    }
+
+    .bold {
+        font-weight: bold;
+        margin: auto 0;
+    }
+
+    .closed-image, .open-image {
+        height: 40px;
+        width: 40px;
+        
+    }
+
+    .closed-image.small {
+        width: 20px;
+        height: 20px;
+    }
+
+    .open-image.small {
+        width: 20px;
+        height: 20px;
+    }
+
+
+    .image-chat {
+        padding: 15px 20px;
+        background: rgb(255,199,217);
+        position: fixed;
+        bottom: 40px;
+        right: 40px;
+        border-radius: 50px;
+        border: 1px solid white;
+        text-decoration: none;
+        color: #273AAA;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: fit-content;
+    }
+
+    .image-chat img {
+        height: 20px;
+        width: 20px;
+    }
+    
+    .image-chat .chat-bottom {
+        margin: 0;
+        text-decoration: none;
+        color: #273AAA;
+    }
+
+    .image-chat:hover {
+        filter: drop-shadow(0px 0px 5px #fc4d5c);
+    }
+
+    
+
+    @keyframes opacity {
+    50% {opacity: 0.2;}
+    }
+
+    .button-image {
+        margin-top: 100px;
+        text-align: center;
+    }
+    .image-pulse {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: fit-content;
+        gap: 10px;
+        margin: 10px auto;
+    }
+    .image {
+        height: auto;
+        width: 80px;
+        animation: opacity 3s infinite;
+    }
+
+    .chat-btn {
+        border: 3px solid #fc4d5c;
+        transition: all 0.2s ease-in-out;
+        text-decoration: none;
+        font-size: 36px;
+        font-weight: bold;
+        padding: 10px 30px;
+        color: #273AAA;
+        border-radius: 16px;
+        display: inline-block;
+        text-transform: uppercase;
+        background: #f8c7da;
+    }
+
+    .chat-btn:hover {
+        filter: drop-shadow(0px 0px 5px #fc4d5c);
+
+    }
+
+</style>
+<script>
+    // Get the elements to toggle
+    const openDivs = document.querySelectorAll('.open');
+   const closedDivs = document.querySelectorAll('.closed');
+
+   // Function to check the current time and toggle the visibility
+   function toggleDivs() {
+       const now = new Date();
+       const hours = now.getHours();
+       const minutes = now.getMinutes();
+
+       // Check if current time is between 18:30 and 24:00
+       if ((hours > 18 || (hours === 18 && minutes >= 30)) && (hours < 24)) {
+           openDivs.forEach(div => div.style.display = 'flex');
+           closedDivs.forEach(div => div.style.display = 'none');
+       } else {
+           openDivs.forEach(div => div.style.display = 'none');
+           closedDivs.forEach(div => div.style.display = 'flex');
+       }
+   }
+
+   // Call the function initially to set the correct visibility
+   toggleDivs();
+
+   // Update the visibility every minute
+   setInterval(toggleDivs, 60000);
+</script>

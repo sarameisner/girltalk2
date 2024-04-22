@@ -1,0 +1,123 @@
+html {
+  /* cursor: url("https://i.stack.imgur.com/wu8CP.png"), auto; */
+  cursor: url("cursor.png"), auto;
+  background: #f8c7da;
+}
+
+body {
+  max-width: 1100px;
+  margin: 10px auto;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  cursor: url("cursor.png"), auto;
+}
+
+p {
+  font-size: 24px;
+}
+
+.content {
+  width: 900px;
+  margin: 10px auto;
+}
+
+/* Spil */
+.memory-game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+  margin: 30px 0;
+  position: relative; /* Ensure the .memory-game container is positioned relative */
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, 150px);
+  gap: 20px;
+}
+
+.card {
+  width: 100%;
+  height: 150px;
+  background-color: #f8c7da;
+  border-radius: 5px;
+  cursor: url("cursor.png"), auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative; /* Added to position the front and back layers */
+  border: 2px solid #fc4d5c;
+  transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+  filter: drop-shadow(0px 0px 5px #fc4d5c);
+}
+
+.front,
+.back {
+  position: absolute; /* Added to position the front and back layers */
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.back {
+  display: none; /* Initially hide the back (image) */
+}
+
+.flipped .back {
+  display: block; /* Show the back (image) when card is flipped */
+}
+
+.matched .back {
+  display: block; /* Keep the back (image) visible for matched cards */
+}
+
+.message {
+  position: absolute; /* Position the message absolutely within the .memory-game container */
+  top: 50%; /* Place the message at the vertical center */
+  left: 50%; /* Place the message at the horizontal center */
+  transform: translate(-50%, -50%); /* Center the message both horizontally and vertically */
+  font-size: 24px; /* Adjust font size as needed */
+  display: none;
+}
+
+.her {
+  color: #273aaa; /* Example styling */
+  font-weight: bold; /* Example styling */
+  display: block;
+}
+
+.hidden {
+  transition: all 2s ease-in-out;
+  opacity: 0;
+}
+
+button {
+  padding: 10px;
+  margin: 0 auto;
+  border: 2px solid #fc4d5c;
+  display: block;
+  background: #fc4d5c;
+  border-radius: 8px;
+  color: white;
+  transition: all 0.4s ease-in-out;
+  cursor: url("cursor.png"), auto;
+}
+button:hover {
+  border-color: #273aaa;
+  background-color: #273aaa;
+  border-radius: 0;
+}

@@ -1,0 +1,29 @@
+---
+import MainLayout from "../layouts/MainLayouts.astro"
+import Spil from "../components/Spil.astro"
+import Button from "../components/Button.astro"
+import ImageText from "../components/ImageText.astro"
+import Ensom from "../components/Ensom.astro"
+import Advice from "../components/Advice.astro"
+
+---
+
+<body>
+	<MainLayout>		
+		<ImageText/>
+		<Ensom/>
+		<!-- <video autoplay muted controls src="video1.mp4"></video> -->
+		<Advice/>
+		<Button/>
+		<Spil/>
+	</MainLayout>	
+</body>
+
+<style>
+	video {
+		border-radius: 16px;
+		width: 400px;
+		margin: 10px auto;
+    	display: block;
+	}
+</style>
