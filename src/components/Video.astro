@@ -1,15 +1,95 @@
 ---
-
 ---
+<div class="container">
+  <div class="left-hearts">
+    <img src="hjerte1.svg" alt="hjerte1" class="heart">
+    <img src="hjerte2.svg" alt="hjerte2" class="heart">
+    <img src="hjerte1.svg" alt="hjerte1" class="heart">
+    <img src="hjerte2.svg" alt="hjerte2" class="heart">
+    <img src="hjerte1.svg" alt="hjerte1" class="heart">
+  </div>
+  <div class="video-container">
+    <video id="myVideo" poster="video-poster.jpg" controls>
+      <source src="https://sarameisner.dk/kea/fun/langvideo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="right-hearts">
+    <img src="hjerte2.svg" alt="hjerte2" class="heart">
+    <img src="hjerte1.svg" alt="hjerte1" class="heart">
+    <img src="hjerte2.svg" alt="hjerte2" class="heart">
+    <img src="hjerte1.svg" alt="hjerte1" class="heart">
+    <img src="hjerte2.svg" alt="hjerte2" class="heart">
+  </div>
+</div>
 
-<video autoplay muted controls src="https://sarameisner.dk/kea/fun/langvideo.mp4"></video>
-
-<img src="hjerte1.svg" alt="hjerte1">
 <style>
-	video {
-		border-radius: 16px;
-		width: 400px;
-		margin: 10px auto;
-    	display: block;
-	}
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr; 
+    gap: 20px;
+    margin: 20px;
+  }
+
+  .heart {
+    width: 60px;
+    height: auto;
+    animation: pulse 1.5s ease-in-out infinite alternate;
+  }
+
+  .left-hearts,
+  .right-hearts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+  }
+
+  .video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 650px; 
+    overflow: hidden; 
+  }
+
+  video {
+    border-radius: 16px;
+    width: auto;
+    height: 100%;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.1);
+    }
+  }
 </style>
+
+<script>
+// Hent videoelementet
+var video = document.getElementById('myVideo');
+
+// Lyt efter scroll-hændelser
+window.addEventListener('scroll', function() {
+  // Tjek om videoen er synlig i viewport
+  if (isInViewport(video)) {
+    // Start videoen
+    video.play();
+  } else {
+    // Pause videoen hvis den ikke er synlig
+    video.pause();
+  }
+});
+
+// Funktion for at tjekke om et element er synligt i viewport
+function isInViewport(element) {
+  var rect = element.getBoundingClientRect();
+  var windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+  // Returner true hvis bunden af elementet er synligt i viewport
+  return (rect.bottom >= 0 && rect.bottom <= windowHeight);
+}
+</script>

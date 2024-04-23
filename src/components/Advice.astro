@@ -6,18 +6,20 @@
     <div class="top">
         <p>Mathildas 3 gode råd til hvis du er</p>
     </div>
-    <img src="ensom.svg" alt="">
-    <ol>
-        <li>
-            <p>Sluk for Instagram: Lad være med at lade dig forføre af det perfekte liv, du ser på sociale medier. Nogle gange skal man lige trække stikket ud for at finde sig selv igen.</p>
-        </li>
-        <li>
-            <p>Lav noget du elsker: Når ensomheden føles overvældende, så find noget, der bringer dig glæde. Dyk ned i dine hobbyer eller passioner. Det kan være en god måde at genopdage dig selv på.</p>
-        </li>
-        <li>
-            <p>Tal om det: Det er okay at føle sig ensom, og du er ikke alene. Når du deler dine følelser med andre, kan det hjælpe med at lette byrden. Der er helt sikkert andre, der kæmper med det samme.</p>
-        </li>
-    </ol>
+    <div class="content">
+        <img src="ensom.svg" alt="" class="adviceimg">
+        <ol>
+            <li>
+                <p>Sluk for Instagram: Lad være med at lade dig forføre af det perfekte liv, du ser på sociale medier. Nogle gange skal man lige trække stikket ud for at finde sig selv igen.</p>
+            </li>
+            <li>
+                <p>Lav noget du elsker: Når ensomheden føles overvældende, så find noget, der bringer dig glæde. Dyk ned i dine hobbyer eller passioner. Det kan være en god måde at genopdage dig selv på.</p>
+            </li>
+            <li>
+                <p>Tal om det: Det er okay at føle sig ensom, og du er ikke alene. Når du deler dine følelser med andre, kan det hjælpe med at lette byrden. Der er helt sikkert andre, der kæmper med det samme.</p>
+            </li>
+        </ol>
+    </div>
 </div>
 
 <style>
@@ -28,17 +30,49 @@
         color: #273AAA; 
         font-size: 44px;
         text-align: center;
-        font-weight: bold;
+        font-family: "obviously", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        margin-bottom: 50px; 
+    }
+
+    .content {
+        text-align: center;
+    }
+
+    img {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 70px; 
+        max-width: 80%;
     }
 
     ol {
         max-width: 800px;
-        margin: 10px auto;
-        
-        gap: 40px;
+        margin: 0 auto;
+        gap: 50px;
+    }
+
+    li {
+        margin-bottom: 50px; 
     }
 
     li::marker {
         font-size: 24px;
     }
+
+    .adviceimg{
+        animation: pulse 1.5s ease-in-out infinite alternate;
+    }
+
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.1);
+    }
+  }
+    
 </style>
