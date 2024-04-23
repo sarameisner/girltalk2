@@ -1,1 +1,146 @@
+---
+---
+<img src="psst.svg" alt="psst" class="psst">
+<div class="grafik_container">
+<img src="pil.svg" alt="" class="pil">
+<img src="rundtlogo.svg" alt="" class="rundtlogo">
+</div>
+<div class="container">
+  <div class="left-hearts">
+    <img src="heart3.svg" alt="hjerte3" class="heart">
+    <img src="heart4.svg" alt="hjerte4" class="heart">
+    <img src="heart3.svg" alt="hjerte3" class="heart">
+    <img src="heart4.svg" alt="hjerte4" class="heart">
+    <img src="heart3.svg" alt="hjerte3" class="heart">
+   
+ 
+  </div>
 
+<div class="video-container">
+<video id="myVideo2" poster="video-poster.jpg" controls>
+<source src="https://sarameisner.dk/kea/fun/kat.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+</video>
+</div>
+
+  <div class="right-hearts">
+    <img src="heart4.svg" alt="hjerte2" class="heart">
+    <img src="heart3.svg" alt="hjerte1" class="heart">
+    <img src="heart4.svg" alt="hjerte2" class="heart">
+    <img src="heart3.svg" alt="hjerte1" class="heart">
+      <img src="heart4.svg" alt="hjerte2" class="heart">
+  
+  </div>
+</div>
+
+
+
+  <style>
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr; 
+    gap: 20px;
+    margin: 20px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+
+  .heart {
+    width: 60px;
+    height: auto;
+    animation: pulse 1.5s ease-in-out infinite alternate;
+  }
+
+.left-hearts,
+  
+.right-hearts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+  }
+.psst {
+max-width: 46%;
+transform: rotate(-20deg);
+margin-left: -50px;
+position: absolute;
+top: 3020px
+
+}
+ .grafik_container {
+display: flex;
+gap: 120px;
+margin-bottom: 40px;
+margin-top: 40px;
+}
+.video-container {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 650px; 
+overflow: hidden; 
+
+  }
+
+video {
+border-radius: 16px;
+width: auto;
+height: 100%;
+border: 3px solid #fc4d5c;
+filter: drop-shadow(0px 0px 5px #fc4d5c);
+  }
+@keyframes rotateImage {
+  0% {
+    transform: rotate(0deg); 
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rundtlogo {
+  max-width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto; 
+  margin-top: 100px; 
+  margin-bottom: 100px;
+  animation: rotateImage 8s linear infinite; 
+}
+
+
+.pil {
+max-width: 30%;
+margin-left: 18%; 
+margin-top: 90px;
+margin-bottom: 10px;
+transform: rotate(40deg);
+}
+  </style>
+
+  <script>
+// Henter videoelementet
+var video = document.getElementById('myVideo2');
+
+// Lytter efter scroll-hændelser
+window.addEventListener('scroll', function() {
+  // Tjekker om videoen er synlig i viewport
+  if (isInViewport(video)) {
+    // Starter videoen
+    video.play();
+  } else {
+    // Pauser videoen hvis den ikke er synlig
+    video.pause();
+  }
+});
+
+// Funktion for at tjekke om et element er synligt i viewport
+function isInViewport(element) {
+  var rect = element.getBoundingClientRect();
+  var windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+  // Returner true hvis bunden af elementet er synligt i viewport
+  return (rect.bottom >= 0 && rect.bottom <= windowHeight);
+}
+</script>

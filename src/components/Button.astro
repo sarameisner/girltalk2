@@ -2,34 +2,34 @@
 
 ---
 
+
 <div class="chatten">
-<div>
-<div class="button-image">
-    <div class="image-pulse">
-        <img class="image" src="hjerte.png" alt="">
-        <img class="image" src="sms.png" alt="">
+    <div class="button-image">
+        <div class="image-pulse">
+            <img class="image" src="hjerte.png" alt="">
+            <img class="image" src="sms.png" alt="">
+        </div>
+        <a target="_blank" href="https://www.girltalk.dk/vores-tilbud/chat-med-os?fbclid=IwZXh0bgNhZW0CMTAAAR2wDOBLj4vQdhqUSWK9HXOjyowyEgRbAoCb-mycf3iDetajGmutqpEyPyM_aem_AdN9SfU-PgsdQfFHiN9HPvthJ9mBYJB5em2GiZu6xyC1yYnMKt-NbtvIlaSOhl9_U0JKZRomX8FM-sw7kxFm1hXJ" class="chat-btn">Chat med os</a>
+        <div class="closed">
+            <img class="closed-image" src="closed.svg" alt="">
+            <p class="bold">Lukket</p>
+        </div>
+        <div class="open">
+            <img class="open-image" src="open.svg" alt="">
+            <p class="bold">Åben</p>
+        </div>
     </div>
-    <a target="_blank" href="https://www.girltalk.dk/vores-tilbud/chat-med-os?fbclid=IwZXh0bgNhZW0CMTAAAR2wDOBLj4vQdhqUSWK9HXOjyowyEgRbAoCb-mycf3iDetajGmutqpEyPyM_aem_AdN9SfU-PgsdQfFHiN9HPvthJ9mBYJB5em2GiZu6xyC1yYnMKt-NbtvIlaSOhl9_U0JKZRomX8FM-sw7kxFm1hXJ" class="chat-btn">Chat med os</a>
-    <div class="closed">
-        <img class="closed-image" src="closed.svg" alt="">
-        <p class="bold">Lukket</p>
-    </div>
-    <div class="open">
-        <img class="open-image" src="open.svg" alt="">
-        <p class="bold">Åben</p>
-    </div>
-</div>
 
-<div class="open image-chat">
-    <img class="open-image small" src="open.svg" alt="">
-    <a class="chat-bottom" target="_blank" href="https://www.girltalk.dk/vores-tilbud/chat-med-os?fbclid=IwZXh0bgNhZW0CMTAAAR2wDOBLj4vQdhqUSWK9HXOjyowyEgRbAoCb-mycf3iDetajGmutqpEyPyM_aem_AdN9SfU-PgsdQfFHiN9HPvthJ9mBYJB5em2GiZu6xyC1yYnMKt-NbtvIlaSOhl9_U0JKZRomX8FM-sw7kxFm1hXJ">Chat</p>
-</div>
+    <div class="open image-chat">
+        <img class="open-image small" src="open.svg" alt="">
+        <a class="chat-bottom" target="_blank" href="https://www.girltalk.dk/vores-tilbud/chat-med-os?fbclid=IwZXh0bgNhZW0CMTAAAR2wDOBLj4vQdhqUSWK9HXOjyowyEgRbAoCb-mycf3iDetajGmutqpEyPyM_aem_AdN9SfU-PgsdQfFHiN9HPvthJ9mBYJB5em2GiZu6xyC1yYnMKt-NbtvIlaSOhl9_U0JKZRomX8FM-sw7kxFm1hXJ">Chat</p>
+    </div>
 
-<div class="closed image-chat">
-    <img class="closed-image small" src="closed.svg" alt="">
-    <a class="chat-bottom" target="_blank" href="https://www.girltalk.dk/vores-tilbud/chat-med-os?fbclid=IwZXh0bgNhZW0CMTAAAR2wDOBLj4vQdhqUSWK9HXOjyowyEgRbAoCb-mycf3iDetajGmutqpEyPyM_aem_AdN9SfU-PgsdQfFHiN9HPvthJ9mBYJB5em2GiZu6xyC1yYnMKt-NbtvIlaSOhl9_U0JKZRomX8FM-sw7kxFm1hXJ">Chat</p>
-</div>
-</div>
+    <div class="closed image-chat">
+        <img class="closed-image small" src="closed.svg" alt="">
+        <a class="chat-bottom" target="_blank" href="https://www.girltalk.dk/vores-tilbud/chat-med-os?fbclid=IwZXh0bgNhZW0CMTAAAR2wDOBLj4vQdhqUSWK9HXOjyowyEgRbAoCb-mycf3iDetajGmutqpEyPyM_aem_AdN9SfU-PgsdQfFHiN9HPvthJ9mBYJB5em2GiZu6xyC1yYnMKt-NbtvIlaSOhl9_U0JKZRomX8FM-sw7kxFm1hXJ">Chat</p>
+    </div>
+
 </div>
 
 
@@ -147,17 +147,17 @@
 
 </style>
 <script>
-    // Get the elements to toggle
+  
     const openDivs = document.querySelectorAll('.open');
    const closedDivs = document.querySelectorAll('.closed');
 
-   // Function to check the current time and toggle the visibility
+
    function toggleDivs() {
        const now = new Date();
        const hours = now.getHours();
        const minutes = now.getMinutes();
 
-       // Check if current time is between 18:30 and 24:00
+     
        if ((hours > 18 || (hours === 18 && minutes >= 30)) && (hours < 24)) {
            openDivs.forEach(div => div.style.display = 'flex');
            closedDivs.forEach(div => div.style.display = 'none');
@@ -167,9 +167,9 @@
        }
    }
 
-   // Call the function initially to set the correct visibility
+   
    toggleDivs();
 
-   // Update the visibility every minute
+
    setInterval(toggleDivs, 60000);
 </script>

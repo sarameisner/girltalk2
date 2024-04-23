@@ -11,21 +11,21 @@
   </div>
   <div class="memory-game">
       <div class="board">
-        <!-- Cards will be generated dynamically here -->
+      
       </div>
       <div class="message"></div>
-  <!-- This element will display the completion message and the Play Again button -->
+
   </div>
 </div>
 
 
 <style>
   .image-chat {
-    margin-top: 30px;
+    margin-top: 100px;
     width: 400px;
     margin-right: 150px;
     margin-left: auto;
-    margin-bottom: 80px;
+    margin-bottom: 10px;
   }
 
   .text {
@@ -34,14 +34,18 @@
       margin: 0 auto;
   }
   h2 {
+    color: #273aaa;
+    font-family: "obviously", sans-serif;
+    font-weight: 700;
     font-size: 52px;
-    color: #273AAA;
     margin-top: 20px;
     margin-bottom: 0;
+
   }
   p {
     font-size: 24px;
   }
+
 </style>
 
 
@@ -50,16 +54,16 @@
 const images = ["image1.png", "image1.png", "image2.png", "image2.png", "image3.png", "image3.png", "image4.png", "image4.png", "image5.png", "image5.png", "image6.png", "image6.png"];
 const board = document.querySelector(".board");
 let flippedCards = [];
-let matchedPairsCount = 0; // Track the number of matched pairs
-let canFlip = true; // Added a flag to prevent flipping multiple cards at once
+let matchedPairsCount = 0; 
+let canFlip = true; 
 
-// Duplicate the images to create pairs
+
 let cards = [...images];
 
-// Shuffle the cards
+
 cards.sort(() => Math.random() - 0.5);
 
-// Create the board
+
 function createBoard() {
   for (let i = 0; i < cards.length; i++) {
     const card = document.createElement("div");
@@ -77,7 +81,6 @@ function createBoard() {
   }
 }
 
-// Flip the card
 function flipCard() {
   if (!canFlip || this.classList.contains("flipped") || this.classList.contains("matched")) {
     return;
@@ -87,59 +90,56 @@ function flipCard() {
   flippedCards.push(this);
 
   if (flippedCards.length === 2) {
-    canFlip = false; // Prevent flipping more cards until the check is done
+    canFlip = false;
     const firstCardIndex = flippedCards[0].getAttribute("data-index");
     const secondCardIndex = flippedCards[1].getAttribute("data-index");
 
     if (cards[firstCardIndex] === cards[secondCardIndex]) {
-      matchedPairsCount++; // Increment the matched pairs count
-      flippedCards.forEach((card) => card.classList.add("matched", "hidden")); // Add both matched and hidden classes
+      matchedPairsCount++;
+      flippedCards.forEach((card) => card.classList.add("matched", "hidden")); 
       flippedCards = [];
 
       setTimeout(() => {
-        matchedPairsCount === cards.length / 2 && showCompletionMessage(); // Check if all pairs are matched
-        canFlip = true; // Allow flipping cards again
+        matchedPairsCount === cards.length / 2 && showCompletionMessage(); 
+        canFlip = true;
       }, 1000);
     } else {
       setTimeout(() => {
         flippedCards.forEach((card) => card.classList.remove("flipped"));
         flippedCards = [];
-        canFlip = true; // Allow flipping cards again
+        canFlip = true; 
       }, 1000);
     }
   }
 }
 
-// Function to show completion message
+
 function showCompletionMessage() {
-  console.log("All pairs are matched!"); // Debugging
+  console.log("All pairs are matched!"); 
   const message = document.querySelector(".message");
   message.classList.add("her");
-
-  // Add completion text
+  
   const completionText = document.createElement("p");
   completionText.textContent = "You connected all pairs!";
   message.appendChild(completionText);
 
-  // Add Play Again button
   const playAgainButton = document.createElement("button");
   playAgainButton.textContent = "Play Again";
   playAgainButton.addEventListener("click", resetGame);
   message.appendChild(playAgainButton);
 }
 
-// Function to reset the game
+
 function resetGame() {
-  // Clear the board
+
   board.innerHTML = "";
-  // Reset flipped cards and matched pairs count
   flippedCards = [];
   matchedPairsCount = 0;
-  // Reshuffle and recreate the cards
+  
   cards = [...images];
   cards.sort(() => Math.random() - 0.5);
   createBoard();
-  // Remove completion message and play again button
+
   const message = document.querySelector(".message");
   message.textContent = "";
   message.classList.remove("her");

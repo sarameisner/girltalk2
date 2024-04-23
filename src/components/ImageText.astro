@@ -3,12 +3,12 @@
 ---
 
 <div class="image-text">
-    <img class="hero-image" src="hero.svg" alt="">
     <div class="text">
         <h1 class="hero-heading">Velkommen</h1>
         <p class="hero-p">til vores webfeature om ensomhed blandt unge piger. I denne særlige artikel har vi interviewet to inspirerende kvinder: Kathrine fra Girl Talk, og Mathilda, som er ung iværksætter og ejeren af Rhodflowers.</p>
         <p class="hero-p">Vi dykker ned i emnet ensomhed og deler ærlige perspektiver og erfaringer fra vores interviewpersoner. Sammen udforsker vi også værdifulde råd og strategier til at håndtere og overvinde følelsen af ensomhed.</p>   
     </div>
+    <img class="hero-image" src="hero.svg" alt="">
 </div>
 <img src="pil.svg" alt="" class="pil">
 
@@ -18,30 +18,33 @@
         margin-bottom: 100px;
         width: 1100px;
         display: grid;
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: 2fr 1fr; /* Ændret rækkefølge */
         gap: 30px;
         align-items: center;
     }
 
-
     .hero-heading {
-    display: inline;
-    font-size: 96px;
-    color: #273aaa;
-    font-family: "obviously", sans-serif;
-    font-weight: 700;
-    font-style: normal;
+        display: inline;
+        font-size: 96px;
+        color: #273aaa;
+        font-family: "obviously", sans-serif;
+        font-weight: 700;
+        font-style: normal;
     }
 
     .hero-p {
-    display: block;
-    margin-top: 0;
+        display: block;
+        margin-top: 0;
     }
-    
+
     .pil{
         max-width: 30%;
-        margin-left: 60%; 
+        margin-left: 10%; 
         margin-top: -80px;
-        transform: scaleX(-1);
+        margin-bottom: 100px;
+    }
+
+    .text {
+        padding-right: 20px;
     }
 </style>
