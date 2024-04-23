@@ -21,10 +21,11 @@
 
 <style>
   .image-chat {
-    margin-top: 100px;
+    margin-top: 30px;
     width: 400px;
     margin-right: 150px;
     margin-left: auto;
+    margin-bottom: 80px;
   }
 
   .text {
@@ -44,13 +45,9 @@
 </style>
 
 
-
-
-
 <script>
 
 const images = ["image1.png", "image1.png", "image2.png", "image2.png", "image3.png", "image3.png", "image4.png", "image4.png", "image5.png", "image5.png", "image6.png", "image6.png"];
-
 const board = document.querySelector(".board");
 let flippedCards = [];
 let matchedPairsCount = 0; // Track the number of matched pairs
@@ -69,17 +66,13 @@ function createBoard() {
     card.classList.add("card");
     card.setAttribute("data-index", "" + i);
     card.addEventListener("click", flipCard);
-
     const front = document.createElement("div");
     front.classList.add("front");
-
     const back = document.createElement("div");
     back.classList.add("back");
     back.style.backgroundImage = `url(${cards[i]})`;
-
     card.appendChild(front);
     card.appendChild(back);
-
     board.appendChild(card);
   }
 }
